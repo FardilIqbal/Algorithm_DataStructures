@@ -8,6 +8,7 @@ class Node{
 class LinkedList{
     constructor(){
         this.head = null
+        this.tail = null
         this.size = 0
     }
 
@@ -21,7 +22,8 @@ class LinkedList{
     prepend(value){
         const node = new Node(value)
         if(this.isEmpty()){
-            this.head=node
+            this.head = node
+            this.tail = node
         }else{
             node.next = this.head
             this.head = node
@@ -41,18 +43,23 @@ class LinkedList{
             console.log(listValues)
         }
     }
-    //O(n)
+    //O(1)
     append(value){
         const node = new Node(value)
         if(this.isEmpty()){
-            this.head=node
+            this.head = node
+            this.tail = node
         }else{
-            let prev = this.head
-            while(prev.next){
-                prev = prev.next
-            }
-            prev.next = node
+            //Following code for if there is no tail, just head
+            // let prev = this.head
+            // while(prev.next){
+            //     prev = prev.next
+            // }
+            // prev.next = node
+            this.tail.next = node
+            this.tail = node
         }
+        this.size++
 
     }
     insert(value,index){
@@ -72,6 +79,34 @@ class LinkedList{
             this.size++
         }
     }
+    removeFromFront(){
+        if(this.isEmpty()){
+            return null
+        }
+        const value = this.head.value
+        this.head = this.head.next
+        this.size--
+        return value
+    }
+    removeFromEnd(){
+        if(this.isEmpty()){
+            return null
+        }
+        const value = this.tail.value
+        if(this.size===1){
+            this.head = null
+            this.tail = null
+        }else{
+            let prev = this.head
+            while(prev.next !== this.tail){
+                prev = prev.next
+            }
+            prev.next = null
+            this.tail = prev
+        }
+        this.size--
+        return value
+    }
     removeFrom(index){
         if(index<0||index>= this.size){
             return null
@@ -86,7 +121,7 @@ class LinkedList{
                 prev = prev.next
             }
             removedNode = prev.next
-            prev.next - removedNode.next
+            prev.next = removedNode.next
         }
         this.size--
         return removedNode.value
@@ -112,5 +147,32 @@ class LinkedList{
             }
             return null
         }
+    }
+    search(value){
+        if(this.isEmpty()){
+            return -1
+        }
+        let i = 0
+        let current = this.head
+        while(current){
+            if(current.value===value){
+                return i
+            }
+            current = current.next
+            i++
+        }
+        return -1
+
+    }
+    reverse(){
+        let prev = null
+        let current = this.head
+        while(current){
+            let next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        }
+        this.head = prev
     }
 }
