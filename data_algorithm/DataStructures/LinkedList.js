@@ -176,3 +176,4 @@ class LinkedList{
         this.head = prev
     }
 }
+module.exports = LinkedList
