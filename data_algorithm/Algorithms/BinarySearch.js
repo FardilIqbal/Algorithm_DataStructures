@@ -11,7 +11,7 @@ const binarySearch = (arr, target)=>{
             return middleIndex
         }
         if(target < arr[middleIndex]){
-            rightIndex = middleIndex -1
+            rightIndex = middleIndex - 1
 
         } else {
             leftIndex = middleIndex + 1
@@ -21,7 +21,7 @@ const binarySearch = (arr, target)=>{
 }
 
 const recursiveBinarySearch = (arr,target) =>{
-    return binarySearch(arr,target,0,arr.length-1)
+    return search(arr,target,0,arr.length-1)
 }
 function search (arr,target,leftIndex,rightIndex){
     if(leftIndex>rightIndex){
