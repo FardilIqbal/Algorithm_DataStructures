@@ -2,6 +2,7 @@ class Node{
     constructor(value){
         this.value = value
         this.next = null
+        this.prev = null
     }
 }
 
@@ -25,6 +26,7 @@ class LinkedList{
             this.head = node
             this.tail = node
         }else{
+            this.head.prev = node
             node.next = this.head
             this.head = node
         }
@@ -57,11 +59,14 @@ class LinkedList{
             // }
             // prev.next = node
             this.tail.next = node
+            node.prev = this.tail
             this.tail = node
+            
         }
         this.size++
 
     }
+    //O(n)
     insert(value,index){
         if(index<0 || index > this.size){
             return
