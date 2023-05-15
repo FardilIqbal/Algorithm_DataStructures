@@ -1,6 +1,6 @@
 //An integer is a power of two if there exists an integer 'x' such that 'n' ===2^x
 //O(logn)
-const isPowerOfTwo = (n) =>{
+const isPowerOfTwo = (n) => {
     if(n<1){
         return false
     }

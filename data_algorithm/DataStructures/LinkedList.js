@@ -46,7 +46,7 @@ class LinkedList{
         }
     }
     //O(1)
-    append(value){
+    push(value){
         const node = new Node(value)
         if(this.isEmpty()){
             this.head = node
@@ -93,7 +93,7 @@ class LinkedList{
         this.size--
         return value
     }
-    removeFromEnd(){
+    pop(){
         if(this.isEmpty()){
             return null
         }
