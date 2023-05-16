@@ -12,3 +12,19 @@
 - Do not have indices
 - Connected via nodes with a next pointer
 - Random access is not allowed
+
+# Doubly Linked List
+
+# Hash Tables
+- Used to store key-value pairs
+- Keys are not ordered
+- Fast for all of the following operations:
+    - Finding Values
+    - Adding new values
+    - Removing values
+- In order to look up values by keys, we need a way to convert keys into valid array indices
+- Function that performs this is called a hash function
+    - Needs to be fast (constant time)
+    - Doesn't cluster outputs at specific indices, but distributes uniformly
+    - Deterministic (Same input yields same output)
+    
